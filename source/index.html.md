@@ -111,7 +111,10 @@ improper handling of deposit/ withdrawal requests.
 - To ensure that the callbacks have processed by callback handler, the CYBAVO SOFA system will continue to send the callbacks to the callback URL until a callback confirmation (HTTP/1.1 200 OK) is received or exceeds the number of retries (retry time interval: 1-3-5-15-45 mins).
 	- If all attempts fail, the callback will be set to a failed state, the callback handler can call the [resend deposit callback](#resend-deposit-callbacks) or [resend withdrawal callback](#resend-withdrawal-callbacks) API to request CYBAVO SOFA system to resend such kind of callback(s) or through the web control panel.
 
-- Refer to [Callback Definition](#callback-definition), [Callback Type Definition](#callback-type-definition) for detailed definition.
+<aside class="notice">
+ Refer to Callback Definition , Callback Type Definition for detailed definition.
+</aside>
+
 - Please refer to the code snippet on the github project to know how to validate the callback payload.
 	- [Go](https://github.com/CYBAVO/SOFA_MOCK_SERVER/blob/master/controllers/OuterController.go#L197)
 	- [Java](https://github.com/CYBAVO/SOFA_MOCK_SERVER_JAVA/blob/master/src/main/java/com/cybavo/sofa/mock/MockController.java#L93)
@@ -123,6 +126,37 @@ improper handling of deposit/ withdrawal requests.
 - Best practice:
 	- While processing a deposit callback, in addition to verifying the checksum of the callback, use [Query Callback Detail](#query-callback-detail) API with the serial ID of the callback to perform an additional confirmation.
 
+<a name="callback-state-change"></a>
+# Callback State Change
+
+
+#### The state of a successful withdrawal request is changed as follows:
+
+processing state(1) -> transaction in pool state(2) -> transaction in chain state(3) -> repeats state 3 until the confirmation count is met
+
+#### The state of a successful deposit request is changed as follows:
+
+transaction in chain state(3) -> repeats state 3 until the confirmation count is met
+
+<aside class="notice">
+ Refer to Transaction State Definition for all transaction states definition.
+</aside>
+
+
+<a name="cryptocurrency-unit-conversion"></a>
+# Cryptocurrency Unit Conversion
+
+#### For callback
+
+- The amount and fees fields in the callback are in the smallest cryptocurrency unit, use `decimal` and `fee_decimal`(in the addon field) fields of callback data to convert the unit.
+
+#### For API
+
+- Refer to decimals of [Currency Definition](#currency-definition) to convert main cryptocurrency unit.
+- For the cryptocurrency token, use the token_decimals field of the [Wallet Info](#query-wallet-info) API to convert cryptocurrency token unit.
+
+
+# REST API
 
 > To authorize, use this code:
 
