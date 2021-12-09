@@ -91,9 +91,8 @@ meta:
 	- After activation, the API code will remain valid until it is replaced by a newly activated read-only API code.
 - Use [listing API](#list-wallets) to list all wallets that can be accessed through a read-only API code.
 
-
-<a name="callback-integration"></a>
-# Callback Integration
+# Callback
+## Callback Integration
 
 - Please note that the wallet must have an activated API code, otherwise no callback will be sent.
 	- Use the [activation API](#activate-api-code) to activate an API code.
@@ -127,14 +126,13 @@ improper handling of deposit/ withdrawal requests.
 	- While processing a deposit callback, in addition to verifying the checksum of the callback, use [Query Callback Detail](#query-callback-detail) API with the serial ID of the callback to perform an additional confirmation.
 
 <a name="callback-state-change"></a>
-# Callback State Change
+## Callback State Change
 
-
-#### The state of a successful withdrawal request is changed as follows:
+### The state of a successful withdrawal request is changed as follows:
 
 processing state(1) -> transaction in pool state(2) -> transaction in chain state(3) -> repeats state 3 until the confirmation count is met
 
-#### The state of a successful deposit request is changed as follows:
+### The state of a successful deposit request is changed as follows:
 
 transaction in chain state(3) -> repeats state 3 until the confirmation count is met
 
@@ -146,17 +144,25 @@ transaction in chain state(3) -> repeats state 3 until the confirmation count is
 <a name="cryptocurrency-unit-conversion"></a>
 # Cryptocurrency Unit Conversion
 
-#### For callback
+### For callback
 
 - The amount and fees fields in the callback are in the smallest cryptocurrency unit, use `decimal` and `fee_decimal`(in the addon field) fields of callback data to convert the unit.
 
-#### For API
+### For API
 
 - Refer to decimals of [Currency Definition](#currency-definition) to convert main cryptocurrency unit.
 - For the cryptocurrency token, use the token_decimals field of the [Wallet Info](#query-wallet-info) API to convert cryptocurrency token unit.
 
 
 # REST API
+
+## Deposit Wallet API
+
+<a name="create-deposit-addresses"></a>
+### Create Deposit Addresses
+
+Create deposit addresses on certain wallet. Once addresses are created, the CYBAVO SOFA system will callback when transactions are detected on these addresses.
+
 
 > To authorize, use this code:
 
