@@ -1,16 +1,15 @@
 ---
-title: API Reference
+title: CYBAVO API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - go
   - java
-  - python
   - javascript
 
 
 includes:
-  - errors
+  
 
 search: true
 
@@ -157,9 +156,10 @@ transaction in chain state(3) -> repeats state 3 until the confirmation count is
 # REST API
 ## POST &nbsp;Create Deposit Addresses
 
-> Request Format An example of the request: For BNB, XLM, XRP or EOS wallet:
+
 
 ```shell
+# Request Format An example of the request: For BNB, XLM, XRP or EOS wallet:
 {
   "count": 2,
   "memos": [
@@ -174,23 +174,18 @@ transaction in chain state(3) -> repeats state 3 until the confirmation count is
 
 curl -X POST -H "Content-Type: application/json" -d '{"count":2,"memos":["10001","10002"]}' \
 http://localhost:8889/v1/mock/wallets/{WALLET_ID}/addresses
-```
-> An example of a successful response:
-> For BNB, XLM, XRP or EOS wallet:
 
-```shell
+
+# An example of a successful response:
+# For BNB, XLM, XRP or EOS wallet:
 {
   "addresses": [
     "10001",
     "10002"
   ]
 }
-```
 
-> For wallet excepts BNB, XLM, XRP or EOS:
-
-	
-```shell
+# For wallet excepts BNB, XLM, XRP or EOS:
 {
   "addresses": [
     "0x2E7248BBCD61Ad7C33EA183A85B1856bc02C40b6",
@@ -198,11 +193,8 @@ http://localhost:8889/v1/mock/wallets/{WALLET_ID}/addresses
     "0x86434604FF857702fbE11cBFf5aC7689Af19c4Ed"
   ]
 }
-```
 
-> For the ETH wallet that uses contract collection:
-
-```shell
+# For the ETH wallet that uses contract collection:
 {
   "txids": [
     "0xe6dfe0d283690f636df5ea4b9df25552e6b576b88887bfb5837016cdd696e754",
@@ -213,6 +205,27 @@ http://localhost:8889/v1/mock/wallets/{WALLET_ID}/addresses
   ]
 }
 ```
+
+``` javascript
+var request = require('request');
+var options = {
+  'method': 'POST',
+  'url': '{{Url}}/sofa/wallets/{{wallet_id}}/addresses?t={{t}}&r={{r}}',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-CODE': '{{api_code}}',
+    'X-CHECKSUM': '{{checksum}}'
+  },
+  body: '{{postbody}}'
+
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
+});
+
+```
+
 
 Create deposit addresses on certain wallet. Once addresses are created, the CYBAVO SOFA system will callback when transactions are detected on these addresses.
 
@@ -250,217 +263,33 @@ The response includes the following parameters:
 | txids | array | Array of transaction IDs used to deploy collection contract |
 
 
+##### Error Code
+
+| HTTP Code | Error Code | Error | Message | Description |
+| :---      | :---       | :---  | :---    | :---        |
+| 403 | -   | Forbidden. Invalid ID | - | No wallet ID found |
+| 403 | -   | Forbidden. Header not found | - | Missing `X-API-CODE`, `X-CHECKSUM` header or query param `t` |
+| 403 | -   | Forbidden. Invalid timestamp | - | The timestamp `t` is not in the valid time range |
+| 403 | -   | Forbidden. Invalid checksum | - | The request is considered a replay request |
+| 403 | -   | Forbidden. Invalid API code | - | `X-API-CODE` header contains invalid API code |
+| 403 | -   | Invalid API code for wallet {WALLET_ID} | - | The API code mismatched |
+| 403 | -   | Forbidden. Checksum unmatch | - | `X-CHECKSUM` header contains wrong checksum |
+| 403 | -   | Forbidden. Call too frequently ({THROTTLING_COUNT} calls/minute) | - | Send requests too frequently |
+| 403 | 112 | Invalid parameter | - | The count and the count of memos mismatched |
+| 403 | 385   | API Secret not valid | - | Invalid API code permission |
+| 403 | 706 | Exceed max allow wallet limitation, Upgrade your SKU to get more wallets | - | Reached the limit of the total number of deposit addresses |
+| 400 | 421 | Mapped(Token) wallet not allow to create deposit addresses, please create the deposit wallet in parent wallet, the address will be synced to mapped wallet automatically | - | Only the parent wallet can create deposit addresses |
+| 400 | 500 | insufficient fund | - | Insufficient balance to deploy collection contract |
+| 400 | 703 | Operation failed | Error message returned by JSON parser | Malformatted post body |
+| 400 | 818 | Destination Tag must be integer | - | Wrong XRP destination tag format |
+| 400 | 945 | The max length of BNB memo is 256 chars | - | Reached the limit of the length of BNB memo |
+| 400 | 946 | The max length of EOS memo is 128 chars | - | Reached the limit of the length of EOS memo |
+| 400 | 947 | The max length of XRP destination tag is 20 chars | - | Reached the limit of the length of XRP destination tag |
+| 400 | 948 | The max length of XLM memo is 20 chars | - | Reached the limit of the length of XLM memo |
+| 404 | 304 | Wallet ID invalid | archived wallet or wrong wallet type | The wallet is not allowed to perform this request |
+
+
+
 ## GET Query Deposit Addresses
 
 Query the deposit addresses created by the [Create Deposit Addresses](#create-deposit-addresses) API.
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
