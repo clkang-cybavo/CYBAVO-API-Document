@@ -155,9 +155,99 @@ transaction in chain state(3) -> repeats state 3 until the confirmation count is
 
 
 # REST API
-## POST Create Deposit Addresses
+## POST &nbsp;Create Deposit Addresses
+
+> Request Format An example of the request: For BNB, XLM, XRP or EOS wallet:
+
+```shell
+{
+  "count": 2,
+  "memos": [
+    "10001",
+    "10002"
+  ],
+  "labels": [
+  	"note-for-001",
+  	"note-for-002"
+  ]
+}
+
+curl -X POST -H "Content-Type: application/json" -d '{"count":2,"memos":["10001","10002"]}' \
+http://localhost:8889/v1/mock/wallets/{WALLET_ID}/addresses
+```
+> An example of a successful response:
+> For BNB, XLM, XRP or EOS wallet:
+
+```shell
+{
+  "addresses": [
+    "10001",
+    "10002"
+  ]
+}
+```
+
+> For wallet excepts BNB, XLM, XRP or EOS:
+
+	
+```shell
+{
+  "addresses": [
+    "0x2E7248BBCD61Ad7C33EA183A85B1856bc02C40b6",
+    "0x4EB990D527c96c64eC5Bfb0D1e304840052d4975",
+    "0x86434604FF857702fbE11cBFf5aC7689Af19c4Ed"
+  ]
+}
+```
+
+> For the ETH wallet that uses contract collection:
+
+```shell
+{
+  "txids": [
+    "0xe6dfe0d283690f636df5ea4b9df25552e6b576b88887bfb5837016cdd696e754",
+    "0xdb18fd33c9a6809bfc341a1c0b2c092be5a360f394c85367f9cf316579281ab4",
+    "0x18075ff1693026f93722f8b2cc0e29bf148ded5bce4dc173c8118951eceabe60",
+    "0x7c6acb506ef033c09f781cc5ad6b2d0a216346758d7f955e720d6bc7a52731a5",
+    "0x7da19f8c0d82cde16636da3307a6bef46eb9f398af3eb2362d230ce300509d63"
+  ]
+}
+```
 
 Create deposit addresses on certain wallet. Once addresses are created, the CYBAVO SOFA system will callback when transactions are detected on these addresses.
+
+##### Request
+
+**POST** /v1/sofa/wallets/`WALLET_ID`/addresses
+
+
+
+- `WALLET_ID` must be a deposit wallet ID
+- The request includes the following parameters:
+- Use [Query Deployed Contract Deposit Addresses](#query-deployed-contract-deposit-addresses) API to query deployed contract addresses.
+
+
+###### Post body
+
+| Field | Type  | Note | Description |
+| :---  | :---  | :--- | :---        |
+| count | int | required, max `1000` | Specify address count |
+| memos | array | required (creating BNB, XLM, XRP or EOS wallet) | Specify memos for BNB, XLM, XRP or EOS deposit wallet. Refer to [Memo Requirement](#memo-requirement) |
+| labels | array | optional | Specify the labels of the generated addresses or memos |
+
+- NOTE: The length of `memos` must equal to `count` while creating addresses for BNB, XLM, XRP or EOS wallet.
+- NOTE: The memos(or called destination tags) of XRP must be strings that can be converted to numbers.
+- If use the `labels` to assign labels, the array length of the labels must equal to `count`.
+- The label will be automatically synced to the child wallet.
+
+##### Response Format
+
+The response includes the following parameters:
+
+| Field | Type  | Description |
+| :---  | :---  | :---        |
+| addresses | array | Array of just created deposit addresses |
+| txids | array | Array of transaction IDs used to deploy collection contract |
 
 
 ## GET Query Deposit Addresses
