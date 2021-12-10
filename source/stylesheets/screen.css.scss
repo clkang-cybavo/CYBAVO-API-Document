@@ -176,13 +176,17 @@ html, body {
   }
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
+    font-size: 14px;
+  }
+  .toc-h3 {
+    padding-left: $nav-padding + $nav-indent + $nav-indent;
     font-size: 12px;
   }
   .badge {
     padding: 10px;
     color: #fff;
     text-transform: uppercase;
-    border-radius: 8px;
+    border-radius: 2px;
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
