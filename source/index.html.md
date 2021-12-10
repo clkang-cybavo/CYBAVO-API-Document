@@ -155,14 +155,14 @@ transaction in chain state(3) -> repeats state 3 until the confirmation count is
 
 
 # REST API
-
-## Deposit Wallet API
-
-<a name="create-deposit-addresses"></a>
-### Create Deposit Addresses
+## Create Deposit Addresses
 
 Create deposit addresses on certain wallet. Once addresses are created, the CYBAVO SOFA system will callback when transactions are detected on these addresses.
 
+
+## Query Deposit Addresses
+
+Query the deposit addresses created by the [Create Deposit Addresses](#create-deposit-addresses) API.
 
 > To authorize, use this code:
 

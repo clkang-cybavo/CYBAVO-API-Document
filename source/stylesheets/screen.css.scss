@@ -168,12 +168,27 @@ html, body {
     background-color: $nav-subitem-bg;
     font-weight: 500;
   }
-
+  .method_post {
+    background: #1f54cd;
+  }
+  .method_get {
+    background: #18a855;
+  }
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
     font-size: 12px;
   }
-
+  .badge {
+    padding: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 8px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    margin-right: 5px;
+    font-size: 10px;
+  }
   .toc-footer {
     padding: 1em 0;
     margin-top: 1em;
