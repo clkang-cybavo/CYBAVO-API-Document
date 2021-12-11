@@ -207,25 +207,139 @@ http://localhost:8889/v1/mock/wallets/{WALLET_ID}/addresses
 ```
 
 ``` javascript
-var request = require('request');
-var options = {
-  'method': 'POST',
-  'url': '{{Url}}/sofa/wallets/{{wallet_id}}/addresses?t={{t}}&r={{r}}',
-  'headers': {
-    'Content-Type': 'application/json',
-    'X-API-CODE': '{{api_code}}',
-    'X-CHECKSUM': '{{checksum}}'
-  },
-  body: '{{postbody}}'
+const crypto = require('crypto');
+const api_server_url = "https://sandtest.api.com";  // replace with api url
+const apikey = '4x1---xxxx-----vjK' // replace with your api key
+const secret = 'xxxxxxxxxxxxxxxxxxxxxxxxx'; // replace with your api secret
+var walletID = `379988`; // replace with your wallet ID
+var method = `POST`;
+var api_route = `/v1/sofa/wallets/${walletID}/addresses`;
+var params = null;
+var postData = `{
+  "count": 2,
+  "memos": [
+    "10001",
+    "10002"
+  ],
+  "labels": [
+    "note-for-001",
+    "note-for-002"
+  ]
+}`;
 
-};
-request(options, function (error, response) {
-  if (error) throw new Error(error);
-  console.log(response.body);
-});
+const randomString = (length) => {
+  let r = '';
+  const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  for (let i = 0; i < length; i++)
+    r += charset.charAt(Math.floor(Math.random() * charset.length));
+  return r;
+}
+
+const tryParseJSON = (s) => {
+  try {
+    const o = JSON.parse(s);
+    if (o && typeof o === 'object') {
+      return o;
+    }
+  } catch (e) {}
+  return s;
+}
+
+const buildChecksum = (params, secret, t, r, postData) => {
+    const p = params || [];
+    p.push(`t=${t}`, `r=${r}`);
+    if (!!postData) {
+      if (typeof postData === 'string') {
+        p.push(postData);
+      } else {
+        p.push(JSON.stringify(postData));
+      }
+    }
+    p.sort();
+    p.push(`secret=${secret}`);
+    return crypto.createHash('sha256').update(p.join('&')).digest('hex');
+}
+
+const doRequest = (url, options, postData) => {
+  console.log('request -> ', url, ', options ->', options);
+  return new Promise((resolve, reject) => {
+    let req = https.request(url, options, (res) => {
+      let resData = [];
+      res.on('data', (fragments) => {
+        resData.push(fragments);
+      });
+      res.on('end', () => {
+        let resBody = Buffer.concat(resData);
+        resolve({ result: tryParseJSON(resBody.toString()), statusCode: res.statusCode });
+      });
+      res.on('error', (error) => {
+        reject(error);
+      });
+    });
+    req.on('error', (error) => {
+      reject(error);
+    });
+    if (!!postData) {
+      if (options.method === 'DELETE') {
+        req.useChunkedEncodingByDefault = true;
+      }
+      req.write(postData);
+    }
+    req.end();
+  });
+}
+
+const makeRequest = async (targetID, method, api, params, postData) => {
+    if (targetID < 0 || method === '' || api === '') {
+      return { error: 'invalid parameters' };
+    }
+    const r = randomString(8);
+    const t = Math.floor(Date.now()/1000);
+    let url = `${api_server_url}${api}?t=${t}&r=${r}`;
+    if (!!params) {
+      url += `&${params.join('&')}`;
+    }
+    const apiCodeObj = {code:apikey,secret:secret}
+
+    const options = {
+      method,
+      headers: {
+        'X-API-CODE': apiCodeObj.code,
+        'X-CHECKSUM': buildChecksum(params, apiCodeObj.secret, t, r, postData),
+        "User-Agent": "nodejs",
+      },
+    };
+  
+    if (method === 'POST' || method === 'DELETE') {
+      options.headers['Content-Type'] = 'application/json';
+    }
+  
+    try {
+      let result = await doRequest(url, options, postData);
+      const resp = tryParseJSON(result);
+      console.log('response ->', resp ? JSON.stringify(resp) : '');
+      return resp;
+    } catch(error) {
+      const resp = tryParseJSON(error);
+      console.log('response ->', resp ? JSON.stringify(resp) : '');
+      return resp;
+    }
+}
+
+const call = async() => {
+    await makeRequest(walletID,method,api_route,params,postData);
+}
+call();
 
 ```
 
+``` go
+
+```
+
+``` java
+
+```
 
 Create deposit addresses on certain wallet. Once addresses are created, the CYBAVO SOFA system will callback when transactions are detected on these addresses.
 
