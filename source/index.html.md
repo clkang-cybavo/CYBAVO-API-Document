@@ -362,10 +362,19 @@ Create deposit addresses on certain wallet. Once addresses are created, the CYBA
 | memos | array | required (creating BNB, XLM, XRP or EOS wallet) | Specify memos for BNB, XLM, XRP or EOS deposit wallet. Refer to [Memo Requirement](#memo-requirement) |
 | labels | array | optional | Specify the labels of the generated addresses or memos |
 
-- NOTE: The length of `memos` must equal to `count` while creating addresses for BNB, XLM, XRP or EOS wallet.
-- NOTE: The memos(or called destination tags) of XRP must be strings that can be converted to numbers.
-- If use the `labels` to assign labels, the array length of the labels must equal to `count`.
-- The label will be automatically synced to the child wallet.
+
+
+<aside class="notice">
+The length of `memos` must equal to `count` while creating addresses for BNB, XLM, XRP or EOS wallet.
+</aside>
+
+<aside class="notice">
+The memos(or called destination tags) of XRP must be strings that can be converted to numbers.
+</aside>
+
+<aside class="notice">
+If use the `labels` to assign labels, the array length of the labels must equal to `count`.The label will be automatically synced to the child wallet.
+</aside>
 
 ##### Response Format
 

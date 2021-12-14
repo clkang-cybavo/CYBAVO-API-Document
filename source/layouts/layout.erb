@@ -99,21 +99,25 @@ under the License.
             <% if h1[:children].length > 0 %>
               <ul class="toc-list-h2">
                 <% h1[:children].each do |h2| %>
-                  <li>
                     <% if h2[:title].index("POST") == 0 %>
+                      <li class="lir">
                         <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title][5..-1] %>">
-                          <span class="badge method_post" style="padding: 5px; font-size: 8px">POST</span>
+                          <span class="badge method_post" style="padding: 3px; font-size: 8px">POST</span>
                           <%= h2[:title][4..] %>
                         </a>
+                      </li>
                     <% elsif h2[:title].index("GET") == 0 %>
-                      <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>">
-                        <span class="badge method_get" style="padding: 5px; font-size: 8px">GET</span>
-                        <%= h2[:title][3..] %>
-                      </a>
+                      <li class="lir">
+                        <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>">
+                          <span class="badge method_get" style="padding: 3px; font-size: 8px">GET</span>
+                          <%= h2[:title][3..] %>
+                        </a>
+                      </li>
                     <% else %>
-                      <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
+                      <li>
+                        <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
+                      </li>
                     <% end %>
-                  </li>
                 <% end %>
               </ul>
             <% end %>

@@ -143,7 +143,12 @@ html, body {
     padding: 0;
     line-height: 28px;
   }
-
+  .lir {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 18px;
+  }
   li {
     color: $nav-text;
     transition-property: background;
@@ -219,7 +224,7 @@ html, body {
   padding: 0 $nav-padding 0 $nav-padding;
   display: block;
   overflow-x: hidden;
-  white-space: nowrap;
+  white-space: pre-line;
   text-overflow: ellipsis;
   text-decoration: none;
   color: $nav-text;
@@ -227,6 +232,7 @@ html, body {
   transition-timing-function: linear;
   transition-duration: 130ms;
 }
+
 
 // button to show navigation on mobile devices
 #nav-button {
