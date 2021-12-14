@@ -145,9 +145,10 @@ html, body {
   }
   .lir {
     list-style: none;
-    margin: 0;
+    margin-top: -10px;
     padding: 0;
     line-height: 18px;
+
   }
   li {
     color: $nav-text;
@@ -158,7 +159,7 @@ html, body {
 
   // This is the currently selected ToC entry
   .toc-link.active {
-    background-color: $nav-active-bg;
+    //background-color: $nav-active-bg;
     color: $nav-active-text;
   }
 
