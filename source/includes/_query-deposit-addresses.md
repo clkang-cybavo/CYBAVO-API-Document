@@ -7,7 +7,8 @@ curl http://localhost:8889/v1/mock/wallets/{WALLET_ID}/addresses?start_index=0&r
 
 #--- THEN ---
 
-/v1/sofa/wallets/179654/addresses?start_index=3&request_number=3
+curl http://localhost:8889/v1/sofa/wallets/179654/addresses?start_index=3&request_number=3
+
 
 # An example of a successful response:
 {

@@ -13,6 +13,7 @@ includes:
   - query-deposit-addresses
   - query-deployed-contract-deposit
   - query-pool-address
+  - query-invalid-deposit-addresses
 search: true
 
 code_clipboard: true
@@ -155,4 +156,5 @@ transaction in chain state(3) -> repeats state 3 until the confirmation count is
 - For the cryptocurrency token, use the token_decimals field of the [Wallet Info](#query-wallet-info) API to convert cryptocurrency token unit.
 
 
-# REST API
+
+
