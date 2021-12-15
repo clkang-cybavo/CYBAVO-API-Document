@@ -14,6 +14,7 @@ includes:
   - query-deployed-contract-deposit
   - query-pool-address
   - query-invalid-deposit-addresses
+  - query-deposit-callback-detail
 search: true
 
 code_clipboard: true

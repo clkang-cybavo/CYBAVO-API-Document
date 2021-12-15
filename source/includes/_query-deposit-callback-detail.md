@@ -1,21 +1,40 @@
-## GET &nbsp;Query Invalid Deposit Addresses
+## GET &nbsp;Query Deposit Callback Detail
 
 ``` shell
 
-curl http://localhost:8889/v1/mock/wallets/{WALLET_ID}/addresses/invalid-deposit
-
+curl 'http://localhost:8889/v1/mock/wallets/{WALLET_ID}/receiver/notifications/txid/{TX_ID}/{VOUT_INDEX}'
 
 # An example of a successful response:
 {
-  "addresses": ["0x5dB3d8C70dAa9C919F9962221c2fDDbe8EBAa5F2"]
+  "notification": {
+    "addon": {},
+    "amount": "2000000000000000000",
+    "block_height": 7757485,
+    "broadcast_at": 1587441501,
+    "chain_at": 1587441501,
+    "confirm_blocks": 166027,
+    "currency": "ETH",
+    "fees": "126000000000000",
+    "from_address": "0x8382Cc1B05649AfBe179e341179fa869C2A9862b",
+    "memo": "",
+    "order_id": "",
+    "processing_state": 2,
+    "serial": 90000000547,
+    "state": 3,
+    "tindex": 27,
+    "to_address": "0x32d638773cB85965422b3B98e9312Fc9392307BC",
+    "txid": "0xb72a81976f780445decd13a35c24974c4e32665cb57d79b3f7a601c775f6a7d8",
+    "type": 1,
+    "vout_index": 0,
+    "wallet_id": 179654
+  }
 }
 ```
 
-When an abnormal deposit is detected, the CYBAVO SOFA system will set the deposit address to invalid. Use this API to obtain the all invalid deposit addresses for further usage.
-
+Query the detailed information of the deposit callback by the tx ID and the vout index.
 
 ##### Request
- **GET** /v1/sofa/wallets/`WALLET_ID`/addresses/invalid-deposit
+**GET** /v1/sofa/wallets/`WALLET_ID`/receiver/notifications/txid/`TX_ID`/`VOUT_INDEX`
 
 <aside class="notice">
  WALLET_ID must be a deposit wallet ID
@@ -25,7 +44,7 @@ The response includes the following parameters:
 
 | Field | Type  | Description |
 | :---  | :---  | :---        |
-| addresses | array | Array of invalid deposit address |
+| notification | object | Refer to [Callback Definition](#callback-definition) |
 
 ##### Error Code
 
@@ -40,4 +59,4 @@ The response includes the following parameters:
 | 403 | -   | Forbidden. Checksum unmatch | - | `X-CHECKSUM` header contains wrong checksum |
 | 403 | -   | Forbidden. Call too frequently ({THROTTLING_COUNT} calls/minute) | - | Send requests too frequently |
 | 403 | 385   | API Secret not valid | - | Invalid API code permission |
-| 404 | 304 | Wallet ID invalid | - | The wallet is not allowed to perform this request |
+| 404 | 304 | Wallet ID invalid | - | The wallet is not allowed to perform this request or the callback (txid+vout_index) not found |
