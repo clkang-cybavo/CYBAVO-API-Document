@@ -103,14 +103,14 @@ under the License.
                       <li class="lir">
                         <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title][5..-1] %>">
                           <span class="badge method_post" style="padding: 3px; font-size: 8px">POST</span>
-                          <p class="np"><%= h2[:title][4..] %></p>
+                          <p class="np"> &nbsp;&nbsp; <%= h2[:title][6..] %></p>
                         </a>
                       </li>
                     <% elsif h2[:title].index("GET") == 0 %>
                       <li class="lir">
                         <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>">
                           <span class="badge method_get" style="padding: 3px; font-size: 8px">GET</span>
-                          <p class="np"> <%= h2[:title][3..] %> </p>
+                          <p class="np"> &nbsp;&nbsp; <%= h2[:title][5..] %> </p>
                         </a>
                       </li>
                     <% else %>
