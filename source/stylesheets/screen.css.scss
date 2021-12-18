@@ -148,6 +148,7 @@ html, body {
     margin-top: -10px;
     padding: 0;
     line-height: 16px;
+    height:46px;
   }
   li {
     color: $nav-text;
@@ -179,9 +180,15 @@ html, body {
   .method_get {
     background: #18a855;
   }
+  .toc-h1 {
+    height:38px;
+    padding-left: $nav-padding + $nav-indent;
+    font-size: 14px;
+  }
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
     font-size: 14px;
+    overflow-y: hidden;
   }
   .toc-h3 {
     padding-left: $nav-padding + $nav-indent + $nav-indent;
@@ -224,7 +231,7 @@ html, body {
   padding: 0 $nav-padding 0 $nav-padding;
   display: block;
   overflow-x: hidden;
-  white-space: pre-line;
+  white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
   color: $nav-text;
@@ -319,7 +326,7 @@ html, body {
     color: $lang-select-text;
     text-decoration: none;
     padding: 0 10px;
-    line-height: 30px;
+    line-height: 20px;
     outline: 0;
 
     &:active, &:focus {
