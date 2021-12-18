@@ -1,4 +1,4 @@
-## GET &nbsp;Query Deposit Callback Detail
+## GET / Query Deposit Callback Detail
 
 ``` shell
 

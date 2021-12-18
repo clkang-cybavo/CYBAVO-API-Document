@@ -1,4 +1,4 @@
-## GET &nbsp;Query Pool Address
+## GET / Query Pool Address
 
 ``` shell
 

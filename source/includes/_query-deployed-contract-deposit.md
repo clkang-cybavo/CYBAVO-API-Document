@@ -1,4 +1,4 @@
-## GET &nbsp;Query Deployed Contract Deposit Addresses
+## GET / Query Deployed Contract Deposit Addresses
 
 ``` shell
 curl 'http://localhost:8889/v1/sofa/wallets/179654/addresses/contract_txid?txids=0xe6dfe0d283690f636df5ea4b9df25552e6b576b88887bfb5837016cdd696e754,0xdb18fd33c9a6809bfc341a1c0b2c092be5a360f394c85367f9cf316579281ab4'

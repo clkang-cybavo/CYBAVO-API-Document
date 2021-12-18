@@ -1,5 +1,5 @@
 # Deposit Wallet API
-## POST &nbsp;Create Deposit Addresses
+## POST / Create Deposit Addresses
 
 
 

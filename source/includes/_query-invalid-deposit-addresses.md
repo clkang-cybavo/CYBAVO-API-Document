@@ -1,4 +1,4 @@
-## GET &nbsp;Query Invalid Deposit Addresses
+## GET / Query Invalid Deposit Addresses
 
 ``` shell
 

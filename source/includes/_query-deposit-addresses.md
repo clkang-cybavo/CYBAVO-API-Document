@@ -1,4 +1,4 @@
-## GET &nbsp;Query Deposit Addresses
+## GET / Query Deposit Addresses
 
 
 ``` shell
