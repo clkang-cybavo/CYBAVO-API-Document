@@ -159,7 +159,7 @@ html, body {
 
   // This is the currently selected ToC entry
   .toc-link.active {
-    //background-color: $nav-active-bg;
+    background-color: $nav-active-bg;
     color: $nav-active-text;
   }
 
@@ -233,7 +233,13 @@ html, body {
   transition-timing-function: linear;
   transition-duration: 130ms;
 }
-
+.np{
+  display: block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
 
 // button to show navigation on mobile devices
 #nav-button {
