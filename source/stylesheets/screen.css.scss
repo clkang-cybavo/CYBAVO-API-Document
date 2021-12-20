@@ -430,9 +430,10 @@ html, body {
   }
 
   hr {
-    margin: 2em 0;
-    border-top: 2px solid $examples-bg;
-    border-bottom: 2px solid $main-bg;
+    margin: 1em 0;
+    border-top: 1px solid $examples-bg;
+    border-bottom: 1px solid $main-bg;
+    opacity: 0.2;
   }
 
   table {
