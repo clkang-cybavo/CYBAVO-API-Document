@@ -199,7 +199,7 @@ Create deposit addresses on certain wallet. Once addresses are created, the CYBA
 
 ### Use [Query Deployed Contract Deposit Addresses](#get-nbsp-query-deposit-addresses) API to query deployed contract addresses.
 
-
+---
 
 ### Post body
 

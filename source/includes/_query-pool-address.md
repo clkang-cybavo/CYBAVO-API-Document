@@ -30,6 +30,8 @@ Get the pool address of a deposit wallet. The pool address has different functio
  WALLET_ID must be a deposit wallet ID
 </aside>
 
+---
+
 The response includes the following parameters:
 
 | Field | Type  | Description |

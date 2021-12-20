@@ -21,6 +21,8 @@ includes:
   - query-deposit-address-label
   - withdraw-assets
   - cancel-withdrawal-request
+  - query-latest-withdrawal-transaction-state
+  - query-all-withdrawal-transaction-states
 search: true
 
 code_clipboard: true

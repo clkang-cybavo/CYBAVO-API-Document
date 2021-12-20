@@ -21,6 +21,9 @@ When an abnormal deposit is detected, the CYBAVO SOFA system will set the deposi
  WALLET_ID must be a deposit wallet ID
 </aside>
 
+
+---
+
 The response includes the following parameters:
 
 | Field | Type  | Description |

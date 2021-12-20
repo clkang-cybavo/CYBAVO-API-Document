@@ -84,6 +84,9 @@ The order_id must be prefixed. Find prefix from corresponding wallet detail on w
 If withdraw BNB or XRP, this API will check whether the destination addresse needs memo / destination tag or not. If the address does need memo / destination tag, the API will fail without memo / destination tag specified.
 </aside>
 
+
+---
+
 The request includes the following parameters:
 
 ###### Post body

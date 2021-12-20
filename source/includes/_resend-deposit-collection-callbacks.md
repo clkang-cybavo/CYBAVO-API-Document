@@ -25,6 +25,9 @@ Refer to [Callback Integration](#callback-integration) for callback rules.
  WALLET_ID must be a deposit wallet ID
 </aside>
 
+
+---
+
 The request includes the following parameters:
 
 ###### Post body

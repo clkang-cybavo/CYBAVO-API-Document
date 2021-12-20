@@ -73,6 +73,8 @@ Query the deposit addresses created by the [Create Deposit Addresses](#post-nbsp
  WALLET_ID must be a deposit wallet ID
 </aside>
 
+---
+
 The request includes the following parameters:
 
 | Field | Type  | Note | Description |

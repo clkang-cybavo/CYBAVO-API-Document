@@ -21,6 +21,9 @@ Update the label of the deposit address.
 The label will be automatically synced between the parent and child wallet.
 </aside>
 
+
+---
+
 The request includes the following parameters:
 
 ###### Post body

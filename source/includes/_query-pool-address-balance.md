@@ -22,6 +22,10 @@ curl http://localhost:8889/v1/mock/wallets/{WALLET_ID}/pooladdress/balance
  WALLET_ID must be a deposit wallet ID
 </aside>
 
+
+---
+
+
 The response includes the following parameters:
 
 | Field | Type  | Description |

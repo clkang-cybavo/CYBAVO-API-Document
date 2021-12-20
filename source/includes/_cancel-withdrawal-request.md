@@ -19,6 +19,7 @@ To cancel the withdrawal request which state is `Init` or `Failed`. The request 
  WALLET_ID must be a deposit wallet ID
 </aside>
 
+---
 
 ##### Response Format
 

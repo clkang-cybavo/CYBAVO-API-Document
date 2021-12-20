@@ -24,6 +24,9 @@ Get the deposit wallet balance.
  WALLET_ID must be a deposit wallet ID
 </aside>
 
+
+---
+
 The response includes the following parameters:
 
 | Field | Type  | Description |

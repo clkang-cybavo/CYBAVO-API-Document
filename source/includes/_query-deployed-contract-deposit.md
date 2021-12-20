@@ -37,6 +37,8 @@ Query deployed contract deposit addresses created by the [Create Deposit Address
  Only deployed addresses will be returned
 </aside>
 
+---
+
 The request includes the following parameters:
 
 | Field | Type  | Note | Description |
