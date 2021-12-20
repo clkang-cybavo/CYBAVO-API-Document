@@ -15,6 +15,12 @@ includes:
   - query-pool-address
   - query-invalid-deposit-addresses
   - query-deposit-callback-detail
+  - resend-deposit-collection-callbacks
+  - query-deposit-wallet-balance
+  - update-deposit-address-label
+  - query-deposit-address-label
+  - withdraw-assets
+  - cancel-withdrawal-request
 search: true
 
 code_clipboard: true
