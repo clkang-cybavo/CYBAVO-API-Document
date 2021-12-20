@@ -23,6 +23,14 @@ includes:
   - cancel-withdrawal-request
   - query-latest-withdrawal-transaction-state
   - query-all-withdrawal-transaction-states
+  - query-withdrawal-transaction-event-logs
+  - query-withdrawal-wallet-balance
+  - query-withdrawal-callback-detail
+  - set-withdrawal-request-acl
+  - resend-withdrawal-callbacks
+  - query-withdrawal-whitelist-configuration
+  - add-withdrawal-whitelist-entry
+  - remove-withdrawal-whitelist-entry
 search: true
 
 code_clipboard: true

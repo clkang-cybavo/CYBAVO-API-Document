@@ -113,6 +113,13 @@ under the License.
                           <p class="np"> &nbsp;&nbsp; <%= h2[:title][5..] %> </p>
                         </a>
                       </li>
+                    <% elsif h2[:title].index("DELETE") == 0 %>
+                      <li class="lir">
+                        <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>">
+                          <span class="badge method_delete" style="padding: 3px; font-size: 8px">DELETE</span>
+                          <p class="np"> &nbsp;&nbsp; <%= h2[:title][8..] %> </p>
+                        </a>
+                      </li>
                     <% else %>
                       <li>
                         <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
