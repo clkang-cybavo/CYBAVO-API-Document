@@ -188,7 +188,7 @@ call();
 
 Create deposit addresses on certain wallet. Once addresses are created, the CYBAVO SOFA system will callback when transactions are detected on these addresses.
 
-##### Request
+### Request
 
 **POST** /v1/sofa/wallets/`WALLET_ID`/addresses
 
@@ -232,7 +232,7 @@ The response includes the following parameters:
 | txids | array | Array of transaction IDs used to deploy collection contract |
 
 
-#### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

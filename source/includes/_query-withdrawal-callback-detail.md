@@ -36,7 +36,7 @@ Query the detailed information of the withdrawal callback by the order ID.
 
 ### This API only provides in-chain transactions query, for those not in-chain transactions use [Query All Withdrawal Transaction States](#get-query-all-withdrawal-transaction-states) API instead.
 
-##### Request
+### Request
  **GET** /v1/sofa/wallets/`WALLET_ID`/sender/notifications/order_id/`ORDER_ID`
 
 <aside class="notice">
@@ -46,6 +46,8 @@ Query the detailed information of the withdrawal callback by the order ID.
 
 ---
 
+### Response Format
+
 The response includes the following parameters:
 
 | Field | Type  | Description |
@@ -53,7 +55,7 @@ The response includes the following parameters:
 | notification | object | Refer to [Callback Definition](#callback-definition) |
 
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

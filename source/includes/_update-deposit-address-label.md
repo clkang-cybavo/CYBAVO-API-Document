@@ -11,7 +11,7 @@ http://localhost:8889/v1/mock/wallets/{WALLET_ID}/addresses/label
 
 Update the label of the deposit address.
 
-##### Request
+### Request
 **POST** /v1/sofa/wallets/`WALLET_ID`/addresses/label
 
 <aside class="notice">
@@ -26,7 +26,7 @@ The label will be automatically synced between the parent and child wallet.
 
 The request includes the following parameters:
 
-###### Post body
+### Post body
 
 | Field | Type  | Note | Description |
 | :---  | :---  | :---  | :---        |
@@ -34,12 +34,12 @@ The request includes the following parameters:
 | label | string | optional, set empty to clear the label | Specify the label of the address |
 
 
-##### Response Format
+### Response Format
 
 Status code 200 represnts a successful operation
 
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

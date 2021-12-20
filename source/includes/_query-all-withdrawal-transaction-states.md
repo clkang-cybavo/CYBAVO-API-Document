@@ -36,7 +36,7 @@ curl http://localhost:8889/v1/mock/wallets/{WALLET_ID}/sender/transactions/{ORDE
 
 Check the all withdrawal transaction states of certain order ID.
 
-##### Request
+### Request
  **GET** /v1/sofa/wallets/`WALLET_ID`/sender/transactions/`ORDER_ID`/all
 
 <aside class="notice">
@@ -46,6 +46,8 @@ Check the all withdrawal transaction states of certain order ID.
 ### The order ID is used in the [withdraw assets](#post-withdraw-assets) API.
 
 ---
+
+### Response Format
 
 The response includes the following parameters:
 
@@ -60,7 +62,7 @@ The response includes the following parameters:
 | create_time | string | The withdrawal time in UTC |
 | state | int | Refer to [Transaction State Definition](#transaction-state-definition) |
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

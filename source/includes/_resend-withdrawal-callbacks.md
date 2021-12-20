@@ -19,7 +19,7 @@ The callback handler can call this API to resend pending, risk-controlled or fai
 
 Refer to [Callback Integration](#callback-integration) for callback rules.
 
-##### Request
+### Request
 **POST** /v1/sofa/wallets/`WALLET_ID`/sender/notifications/manual
 
 <aside class="notice">
@@ -32,7 +32,7 @@ Refer to [Callback Integration](#callback-integration) for callback rules.
 
 The request includes the following parameters:
 
-###### Post body
+### Post body
 
 | Field | Type  | Note | Description |
 | :---  | :---  | :---  | :---        |
@@ -40,7 +40,7 @@ The request includes the following parameters:
 
 ### This ID equal to the serial field of callback data.
 
-##### Response Format
+### Response Format
 
 The response includes the following parameters:
 
@@ -49,7 +49,7 @@ The response includes the following parameters:
 | count | int | Count of callbacks just resent |
 
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

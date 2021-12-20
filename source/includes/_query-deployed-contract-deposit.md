@@ -39,11 +39,16 @@ Query deployed contract deposit addresses created by the [Create Deposit Address
 
 ---
 
+
+### Request Format
+
 The request includes the following parameters:
 
 | Field | Type  | Note | Description |
 | :---  | :---  | :--- | :---        |
 | txids | string | requried, max `10` transaction IDs | Transaction ID used to deploy collection contract |
+
+### Response Format
 
 The response includes the following parameters:
 
@@ -52,7 +57,7 @@ The response includes the following parameters:
 | addresses | map object | The map KEY is Transaction ID used to deploy collection contract and the map VALUE is the address information |
 
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

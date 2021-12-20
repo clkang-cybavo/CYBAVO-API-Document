@@ -14,7 +14,7 @@ curl http://localhost:8889/v1/mock/wallets/{WALLET_ID}/addresses/invalid-deposit
 When an abnormal deposit is detected, the CYBAVO SOFA system will set the deposit address to invalid. Use this API to obtain the all invalid deposit addresses for further usage.
 
 
-##### Request
+### Request
  **GET** /v1/sofa/wallets/`WALLET_ID`/addresses/invalid-deposit
 
 <aside class="notice">
@@ -24,13 +24,15 @@ When an abnormal deposit is detected, the CYBAVO SOFA system will set the deposi
 
 ---
 
+### Response Format
+
 The response includes the following parameters:
 
 | Field | Type  | Description |
 | :---  | :---  | :---        |
 | addresses | array | Array of invalid deposit address |
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

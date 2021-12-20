@@ -66,7 +66,7 @@ curl http://localhost:8889/v1/sofa/wallets/179654/addresses?start_index=3&reques
 ```
 Query the deposit addresses created by the [Create Deposit Addresses](#post-nbsp-create-deposit-addresses) API.
 
-##### Request
+### Request
 **GET** /v1/sofa/wallets/`WALLET_ID`/addresses?start\_index=`from`&request\_number=`count`
 
 <aside class="notice">
@@ -75,6 +75,8 @@ Query the deposit addresses created by the [Create Deposit Addresses](#post-nbsp
 
 ---
 
+### Request Format
+
 The request includes the following parameters:
 
 | Field | Type  | Note | Description |
@@ -82,6 +84,9 @@ The request includes the following parameters:
 | start_index | int | optional, default `0` | Specify address start index |
 | request_number | int | optional, default `1000`, max `5000` | Request address count |
 
+
+
+### Response Format
 
 The response includes the following parameters:
 
@@ -96,7 +101,7 @@ The response includes the following parameters:
 
 - If this is an ETH contract collection deposit wallet, only the deployed address will be returned.
 
-#### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

@@ -18,7 +18,7 @@ Refer to [Callback Integration](#callback-integration) for callback rules.
 - The resend operation could be requested on the web control panel as well.
 
 
-##### Request
+### Request
 **POST** /v1/sofa/wallets/`WALLET_ID`/collection/notifications/manual
 
 <aside class="notice">
@@ -30,13 +30,15 @@ Refer to [Callback Integration](#callback-integration) for callback rules.
 
 The request includes the following parameters:
 
-###### Post body
+#### Post body
 
 | Field | Type  | Note | Description |
 | :---  | :---  | :---  | :---        |
 | notification_id | int64 | required, 0 means all | Specify callback ID to resend |
 
 ### This ID equal to the serial field of callback data.
+
+### Response Format
 
 The response includes the following parameters:
 
@@ -45,7 +47,7 @@ The response includes the following parameters:
 | count | int | Count of callbacks just resent |
 
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

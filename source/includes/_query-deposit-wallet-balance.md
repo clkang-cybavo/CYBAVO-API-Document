@@ -17,7 +17,7 @@ curl http://localhost:8889/v1/mock/wallets/{WALLET_ID}/receiver/balance
 Get the deposit wallet balance.
 
 
-##### Request
+### Request
 **GET** /v1/sofa/wallets/`WALLET_ID`/receiver/balance
 
 <aside class="notice">
@@ -26,6 +26,8 @@ Get the deposit wallet balance.
 
 
 ---
+
+### Response Format
 
 The response includes the following parameters:
 
@@ -36,7 +38,7 @@ The response includes the following parameters:
 | balance | string | Deposit wallet balance |
 | token_balance | string | Deposit wallet token balance |
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

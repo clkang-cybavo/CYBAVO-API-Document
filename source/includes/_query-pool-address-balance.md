@@ -15,7 +15,7 @@ curl http://localhost:8889/v1/mock/wallets/{WALLET_ID}/pooladdress/balance
 
 ```
 
-##### Request
+### Request
 **GET** /v1/sofa/wallets/`WALLET_ID`/addresses?start\_index=`from`&request\_number=`count`
 
 <aside class="notice">
@@ -25,6 +25,7 @@ curl http://localhost:8889/v1/mock/wallets/{WALLET_ID}/pooladdress/balance
 
 ---
 
+### Response Format
 
 The response includes the following parameters:
 
@@ -36,7 +37,7 @@ The response includes the following parameters:
 | wallet_address  | string | Pool address of the wallet |
 
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

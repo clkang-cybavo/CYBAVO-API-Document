@@ -19,7 +19,7 @@ curl http://localhost:8889/v1/mock/wallets/{WALLET_ID}/sender/balance
 
 Get the withdrawal wallet balance. Facilitate to establish a real-time balance monitoring mechanism.
 
-##### Request
+### Request
  **GET** /v1/sofa/wallets/`WALLET_ID`/sender/balance
 
 <aside class="notice">
@@ -28,6 +28,8 @@ Get the withdrawal wallet balance. Facilitate to establish a real-time balance m
 
 
 ---
+
+### Response Format
 
 The response includes the following parameters:
 
@@ -45,7 +47,7 @@ The response includes the following parameters:
 ### The currencies that support the unconfirmed balance are BTC, LTC, ETH, BCH, BSV, DASH
 
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

@@ -31,6 +31,7 @@ includes:
   - query-withdrawal-whitelist-configuration
   - add-withdrawal-whitelist-entry
   - remove-withdrawal-whitelist-entry
+  - check-withdrawal-whitelist
 search: true
 
 code_clipboard: true

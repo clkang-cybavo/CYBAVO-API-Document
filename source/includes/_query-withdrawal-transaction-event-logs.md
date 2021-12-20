@@ -30,7 +30,7 @@ curl http://localhost:8889/v1/mock/wallets/{WALLET_ID}/sender/transactions/event
 Query event logs of a withdrawal transaction by transaction hash.
 
 
-##### Request
+### Request
 **GET** /v1/sofa/wallets/`WALLET_ID`/sender/transactions/eventlog?txid=`TXID`
 
 <aside class="notice">
@@ -40,12 +40,14 @@ Query event logs of a withdrawal transaction by transaction hash.
 
 ---
 
-###### Query Parameters
+### Query Parameters
 
 | Field | Type | Note | Description |
 | :---  | :--- | :--- | :---        |
 | txid | string | required | Representing the transaction hash to query the event log |
 
+
+### Response Format
 
 The response includes the following parameters:
 
@@ -63,7 +65,7 @@ The response includes the following parameters:
 | tx_index | uint | Integer of the transactions index position in the block |
 
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

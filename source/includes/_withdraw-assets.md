@@ -69,7 +69,7 @@ By default, the withdraw API will perform the address check to verify that the o
 The withdrawal API can also interact with the contracts (ERC/BEP 721/1155) deployed in the SOFA system.
 
 
-##### Request
+### Request
 **POST** /v1/sofa/wallets/`WALLET_ID`/sender/transactions
 
 <aside class="notice">
@@ -89,7 +89,7 @@ If withdraw BNB or XRP, this API will check whether the destination addresse nee
 
 The request includes the following parameters:
 
-###### Post body
+### Post body
 
 | Field | Type  | Note | Description |
 | :---  | :---  | :--- | :---        |
@@ -123,7 +123,7 @@ The response includes the following parameters:
 | results | array | Array of withdraw result (order ID/withdraw transaction ID pair), if succeeds |
 
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

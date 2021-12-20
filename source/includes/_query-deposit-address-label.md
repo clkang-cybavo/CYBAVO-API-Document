@@ -18,7 +18,7 @@ http://localhost:8889/v1/mock/wallets/{WALLET_ID}/addresses/get_labels
 Query the labels of the deposit addresses.
 
 
-##### Request
+### Request
 **POST** /v1/sofa/wallets/`WALLET_ID`/addresses/get_labels
 
 <aside class="notice">
@@ -31,12 +31,14 @@ Query the labels of the deposit addresses.
 
 The request includes the following parameters:
 
-###### Post body
+### Post body
 
 | Field | Type  | Note | Description |
 | :---  | :---  | :---  | :---        |
 | addresses | array | required | Specify the addresses to query labels |
 
+
+### Response Format
 
 The response includes the following parameters:
 

@@ -17,7 +17,7 @@ http://localhost:8889/v1/mock/wallets/{WALLET_ID}/sender/transactions/acl
 
 Set an authorized IP to the withdrawal request ACL dynamically.
 
-##### Request
+### Request
 **POST** /v1/sofa/wallets/`WALLET_ID`/sender/transactions/acl
 
 <aside class="notice">
@@ -30,14 +30,14 @@ Set an authorized IP to the withdrawal request ACL dynamically.
 
 The request includes the following parameters:
 
-###### Post body
+### Post body
 
 | Field | Type | Note | Description |
 | :---  | :--- | :--- | :---        |
 | acl | string | requried | Specify an authorized IP in IPv4 format |
 
 
-##### Response Format
+### Response Format
 
 The response includes the following parameters:
 
@@ -46,7 +46,7 @@ The response includes the following parameters:
 | result | int | Specify a successful API call |
 
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

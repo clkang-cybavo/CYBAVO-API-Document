@@ -20,7 +20,7 @@ curl http://localhost:8889/v1/mock/wallets/{WALLET_ID}/sender/transactions/{ORDE
 
 Check the latest withdrawal transaction state of certain order ID.
 
-##### Request
+### Request
 **GET** /v1/sofa/wallets/`WALLET_ID`/sender/transactions/`ORDER_ID`
 
 <aside class="notice">
@@ -30,6 +30,8 @@ Check the latest withdrawal transaction state of certain order ID.
 ### The order ID is used in the [withdraw assets](#post-withdraw-assets) API.
 
 ---
+
+### Response Format
 
 The response includes the following parameters:
 
@@ -43,7 +45,7 @@ The response includes the following parameters:
 | txid | string | Transaction ID |
 | create_time | string | The withdrawal time in UTC |
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

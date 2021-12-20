@@ -29,7 +29,7 @@ http://localhost:8889/v1/mock/wallets/{WALLET_ID}/sender/whitelist
 
 Remove an outgoing address from the withdrawal wallet's whitelist.
 
-##### Request
+### Request
 **DELETE** /v1/sofa/wallets/`WALLET_ID`/sender/whitelist
 
 <aside class="notice">
@@ -45,7 +45,7 @@ Remove an outgoing address from the withdrawal wallet's whitelist.
 
 The request includes the following parameters:
 
-###### Post body
+### Post body
 
 | Field | Type  | Note | Description |
 | :---  | :---  | :--- | :---        |
@@ -55,6 +55,8 @@ The request includes the following parameters:
 | user_id | string | optional | The custom user ID of the outgoing address |
 
 
+### Response Format
+
 The response includes the following parameters:
 
 | Field | Type  | Description |
@@ -62,7 +64,7 @@ The response includes the following parameters:
 | removed_items | array | Array of removed whitelist entries |
 
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

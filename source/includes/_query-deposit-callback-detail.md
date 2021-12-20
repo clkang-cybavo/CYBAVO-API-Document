@@ -33,7 +33,7 @@ curl 'http://localhost:8889/v1/mock/wallets/{WALLET_ID}/receiver/notifications/t
 
 Query the detailed information of the deposit callback by the tx ID and the vout index.
 
-##### Request
+### Request
 **GET** /v1/sofa/wallets/`WALLET_ID`/receiver/notifications/txid/`TX_ID`/`VOUT_INDEX`
 
 <aside class="notice">
@@ -43,13 +43,15 @@ Query the detailed information of the deposit callback by the tx ID and the vout
 
 ---
 
+### Response Format
+
 The response includes the following parameters:
 
 | Field | Type  | Description |
 | :---  | :---  | :---        |
 | notification | object | Refer to [Callback Definition](#callback-definition) |
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

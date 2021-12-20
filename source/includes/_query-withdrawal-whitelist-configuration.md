@@ -14,7 +14,7 @@ curl http://localhost:8889/v1/mock/wallets/{WALLET_ID}/sender/whitelist/config
 
 Query the whitelist configuration of the withdrawal wallet.
 
-##### Request
+### Request
  **GET** /v1/sofa/wallets/`WALLET_ID`/sender/whitelist/config
 
 <aside class="notice">
@@ -24,6 +24,8 @@ Query the whitelist configuration of the withdrawal wallet.
 
 ---
 
+### Response Format
+
 The response includes the following parameters:
 
 | Field | Type  | Description |
@@ -32,7 +34,7 @@ The response includes the following parameters:
 | whitelist_check | boolean | Indicate whether the withdrawal wallet has enabled whitelist checking. |
 
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |

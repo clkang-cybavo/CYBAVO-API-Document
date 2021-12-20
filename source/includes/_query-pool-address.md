@@ -23,7 +23,7 @@ Get the pool address of a deposit wallet. The pool address has different functio
 
 
 
-##### Request
+### Request
 **GET** /v1/sofa/wallets/`WALLET_ID`/pooladdress
 
 <aside class="notice">
@@ -32,13 +32,15 @@ Get the pool address of a deposit wallet. The pool address has different functio
 
 ---
 
+### Response Format
+
 The response includes the following parameters:
 
 | Field | Type  | Description |
 | :---  | :---  | :---        |
 | address  | string | Pool address of wallet |
 
-##### Error Code
+### Error Code
 
 | HTTP Code | Error Code | Error | Message | Description |
 | :---      | :---       | :---  | :---    | :---        |
