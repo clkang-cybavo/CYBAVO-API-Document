@@ -19,6 +19,7 @@ includes:
   - query-deposit-wallet-balance
   - update-deposit-address-label
   - query-deposit-address-label
+  
   - withdraw-assets
   - cancel-withdrawal-request
   - query-latest-withdrawal-transaction-state
@@ -38,6 +39,21 @@ includes:
   - call-contract-read-abi
   - query-callback-history
   - query-callback-detail
+  - query-wallet-synchronization-info
+  - query-transaction-average-fee
+  - batch-query-transaction-average-fees
+  - query-vault-wallet-transaction-history
+  - query-vault-wallet-balance
+
+  - activate-api-code
+  - query-api-code-status
+  - refresh-api-code
+  - query-wallet-info
+  - verify-addresses
+  - inspect-callback-endpoint
+
+  - list-wallets
+  - query-wallets-balance
 search: true
 
 code_clipboard: true
@@ -181,4 +197,48 @@ transaction in chain state(3) -> repeats state 3 until the confirmation count is
 
 
 
+# Mock Server
+
+### How to compile
+- Put sample code to {YOUR\_GO\_PATH}/github.com/cybavo/SOFA\_MOCK\_SERVER
+- Execute
+	- glide install
+	- go build ./mockserver.go
+	- ./mockserver
+
+### Setup configuration
+
+``` shell
+# Configure CYBAVO API server URL in mockserver.app.conf
+api_server_url="BACKEND_SERVER_URL"
+```
+
+### Put wallet API code/secret into mock server
+-	Get API code/secret on web control panel
+	-	API_CODE, API\_SECRET, WALLET\_ID
+- 	Put API code/secret to mock server's databaså
+
+``` shell
+curl -X POST -H "Content-Type: application/json" -d '{"api_code":"API_CODE","api_secret":"API_SECRET"}' \
+http://localhost:8889/v1/mock/wallets/{WALLET_ID}/apitoken
+```
+
+### Register mock server callback URL
+Operate on web control panel
+
+``` shell
+# Notification Callback URL
+http://localhost:8889/v1/mock/wallets/callback
+
+
+# Withdrawal Authentication Callback URL
+http://localhost:8889/v1/mock/wallets/withdrawal/callback
+
+``` 
+
+<aside class="notice">
+  The withdrawal authentication callback URL once set, every withdrawal request will callback this URL to get authentication to proceed withdrawal request.
+</aside>
+
+#### Refer to [WithdrawalCallback()](https://github.com/CYBAVO/SOFA_MOCK_SERVER/blob/master/controllers/OuterController.go#L183) function in mock server OuterController.go
 
