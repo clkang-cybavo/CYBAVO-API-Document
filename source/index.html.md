@@ -37,6 +37,7 @@ includes:
   - sign-message
   - call-contract-read-abi
   - query-callback-history
+  - query-callback-detail
 search: true
 
 code_clipboard: true
