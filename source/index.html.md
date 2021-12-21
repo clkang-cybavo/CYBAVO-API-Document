@@ -32,6 +32,11 @@ includes:
   - add-withdrawal-whitelist-entry
   - remove-withdrawal-whitelist-entry
   - check-withdrawal-whitelist
+  - query-withdrawal-whitelist
+  - query-withdrawal-wallet-transaction-history
+  - sign-message
+  - call-contract-read-abi
+  - query-callback-history
 search: true
 
 code_clipboard: true
