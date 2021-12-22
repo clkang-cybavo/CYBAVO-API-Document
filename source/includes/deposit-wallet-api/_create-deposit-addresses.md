@@ -197,7 +197,7 @@ Create deposit addresses on certain wallet. Once addresses are created, the CYBA
 `WALLET_ID` must be a deposit wallet ID
 </aside>
 
-### Use [Query Deployed Contract Deposit Addresses](#get-nbsp-query-deposit-addresses) API to query deployed contract addresses.
+### Use [Query Deployed Contract Deposit Addresses](#get-query-deposit-addresses) API to query deployed contract addresses.
 
 ---
 

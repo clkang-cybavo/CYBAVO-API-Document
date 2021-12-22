@@ -201,7 +201,7 @@ transaction in chain state(3) -> repeats state 3 until the confirmation count is
 ### For API
 
 - Refer to decimals of [Currency Definition](#currency-definition) to convert main cryptocurrency unit.
-- For the cryptocurrency token, use the token_decimals field of the [Wallet Info](#query-wallet-info) API to convert cryptocurrency token unit.
+- For the cryptocurrency token, use the token_decimals field of the [Wallet Info](#get-query-wallet-info) API to convert cryptocurrency token unit.
 
 
 

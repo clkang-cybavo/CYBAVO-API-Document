@@ -10,7 +10,7 @@ curl -X POST http://localhost:8889/v1/mock/wallets/{WALLET_ID}/sender/transactio
 
 ```
 
-To cancel the withdrawal request which state is `Init` or `Failed`. The request state can be checked on web control panel or query through this [API](#query-withdrawal-callback-detail) (represents `state` = 0 or 5 ).
+To cancel the withdrawal request which state is `Init` or `Failed`. The request state can be checked on web control panel or query through this [API](#get-query-withdrawal-callback-detail) (represents `state` = 0 or 5 ).
 
 ### Request
 **POST** /v1/sofa/wallets/`WALLET_ID`/sender/transactions/`ORDER_ID`/cancel

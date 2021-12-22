@@ -64,7 +64,7 @@ curl http://localhost:8889/v1/sofa/wallets/179654/addresses?start_index=3&reques
 }
 
 ```
-Query the deposit addresses created by the [Create Deposit Addresses](#post-nbsp-create-deposit-addresses) API.
+Query the deposit addresses created by the [Create Deposit Addresses](#post-create-deposit-addresses) API.
 
 ### Request
 **GET** /v1/sofa/wallets/`WALLET_ID`/addresses?start\_index=`from`&request\_number=`count`

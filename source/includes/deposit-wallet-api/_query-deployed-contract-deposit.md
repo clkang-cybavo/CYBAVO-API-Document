@@ -24,7 +24,7 @@ curl 'http://localhost:8889/v1/sofa/wallets/179654/addresses/contract_txid?txids
 
 ```
 
-Query deployed contract deposit addresses created by the [Create Deposit Addresses](#post-nbsp-create-deposit-addresses) API.
+Query deployed contract deposit addresses created by the [Create Deposit Addresses](#post-create-deposit-addresses) API.
 
 
 ##### Request
