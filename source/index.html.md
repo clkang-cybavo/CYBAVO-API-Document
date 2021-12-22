@@ -9,51 +9,52 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 
 includes:
-  - create-deposit-addresses
-  - query-deposit-addresses
-  - query-deployed-contract-deposit
-  - query-pool-address
-  - query-invalid-deposit-addresses
-  - query-deposit-callback-detail
-  - resend-deposit-collection-callbacks
-  - query-deposit-wallet-balance
-  - update-deposit-address-label
-  - query-deposit-address-label
+  - deposit-wallet-api/create-deposit-addresses
+  - deposit-wallet-api/query-deposit-addresses
+  - deposit-wallet-api/query-deployed-contract-deposit
+  - deposit-wallet-api/query-pool-address
+  - deposit-wallet-api/query-pool-address-balance
+  - deposit-wallet-api/query-invalid-deposit-addresses
+  - deposit-wallet-api/query-deposit-callback-detail
+  - deposit-wallet-api/resend-deposit-collection-callbacks
+  - deposit-wallet-api/query-deposit-wallet-balance
+  - deposit-wallet-api/update-deposit-address-label
+  - deposit-wallet-api/query-deposit-address-label
   
-  - withdraw-assets
-  - cancel-withdrawal-request
-  - query-latest-withdrawal-transaction-state
-  - query-all-withdrawal-transaction-states
-  - query-withdrawal-transaction-event-logs
-  - query-withdrawal-wallet-balance
-  - query-withdrawal-callback-detail
-  - set-withdrawal-request-acl
-  - resend-withdrawal-callbacks
-  - query-withdrawal-whitelist-configuration
-  - add-withdrawal-whitelist-entry
-  - remove-withdrawal-whitelist-entry
-  - check-withdrawal-whitelist
-  - query-withdrawal-whitelist
-  - query-withdrawal-wallet-transaction-history
-  - sign-message
-  - call-contract-read-abi
-  - query-callback-history
-  - query-callback-detail
-  - query-wallet-synchronization-info
-  - query-transaction-average-fee
-  - batch-query-transaction-average-fees
-  - query-vault-wallet-transaction-history
-  - query-vault-wallet-balance
+  - withdraw-wallet-api/withdraw-assets
+  - withdraw-wallet-api/cancel-withdrawal-request
+  - withdraw-wallet-api/query-latest-withdrawal-transaction-state
+  - withdraw-wallet-api/query-all-withdrawal-transaction-states
+  - withdraw-wallet-api/query-withdrawal-transaction-event-logs
+  - withdraw-wallet-api/query-withdrawal-wallet-balance
+  - withdraw-wallet-api/query-withdrawal-callback-detail
+  - withdraw-wallet-api/set-withdrawal-request-acl
+  - withdraw-wallet-api/resend-withdrawal-callbacks
+  - withdraw-wallet-api/query-withdrawal-whitelist-configuration
+  - withdraw-wallet-api/add-withdrawal-whitelist-entry
+  - withdraw-wallet-api/remove-withdrawal-whitelist-entry
+  - withdraw-wallet-api/check-withdrawal-whitelist
+  - withdraw-wallet-api/query-withdrawal-whitelist
+  - withdraw-wallet-api/query-withdrawal-wallet-transaction-history
+  - withdraw-wallet-api/sign-message
+  - withdraw-wallet-api/call-contract-read-abi
+  - withdraw-wallet-api/query-callback-history
+  - withdraw-wallet-api/query-callback-detail
+  - withdraw-wallet-api/query-wallet-synchronization-info
+  - withdraw-wallet-api/query-transaction-average-fee
+  - withdraw-wallet-api/batch-query-transaction-average-fees
+  - withdraw-wallet-api/query-vault-wallet-transaction-history
+  - withdraw-wallet-api/query-vault-wallet-balance
 
-  - activate-api-code
-  - query-api-code-status
-  - refresh-api-code
-  - query-wallet-info
-  - verify-addresses
-  - inspect-callback-endpoint
+  - common-api/activate-api-code
+  - common-api/query-api-code-status
+  - common-api/refresh-api-code
+  - common-api/query-wallet-info
+  - common-api/verify-addresses
+  - common-api/inspect-callback-endpoint
 
-  - list-wallets
-  - query-wallets-balance
+  - readonly-api/list-wallets
+  - readonly-api/query-wallets-balance
 search: true
 
 code_clipboard: true
@@ -199,6 +200,22 @@ transaction in chain state(3) -> repeats state 3 until the confirmation count is
 
 # Mock Server
 
+``` shell
+# Configure CYBAVO API server URL in mockserver.app.conf
+api_server_url="BACKEND_SERVER_URL"
+
+curl -X POST -H "Content-Type: application/json" -d '{"api_code":"API_CODE","api_secret":"API_SECRET"}' \
+http://localhost:8889/v1/mock/wallets/{WALLET_ID}/apitoken
+
+
+# Notification Callback URL
+http://localhost:8889/v1/mock/wallets/callback
+
+# Withdrawal Authentication Callback URL
+http://localhost:8889/v1/mock/wallets/withdrawal/callback
+
+
+```
 ### How to compile
 - Put sample code to {YOUR\_GO\_PATH}/github.com/cybavo/SOFA\_MOCK\_SERVER
 - Execute
@@ -208,33 +225,15 @@ transaction in chain state(3) -> repeats state 3 until the confirmation count is
 
 ### Setup configuration
 
-``` shell
-# Configure CYBAVO API server URL in mockserver.app.conf
-api_server_url="BACKEND_SERVER_URL"
-```
 
 ### Put wallet API code/secret into mock server
 -	Get API code/secret on web control panel
 	-	API_CODE, API\_SECRET, WALLET\_ID
 - 	Put API code/secret to mock server's databaså
 
-``` shell
-curl -X POST -H "Content-Type: application/json" -d '{"api_code":"API_CODE","api_secret":"API_SECRET"}' \
-http://localhost:8889/v1/mock/wallets/{WALLET_ID}/apitoken
-```
-
 ### Register mock server callback URL
 Operate on web control panel
 
-``` shell
-# Notification Callback URL
-http://localhost:8889/v1/mock/wallets/callback
-
-
-# Withdrawal Authentication Callback URL
-http://localhost:8889/v1/mock/wallets/withdrawal/callback
-
-``` 
 
 <aside class="notice">
   The withdrawal authentication callback URL once set, every withdrawal request will callback this URL to get authentication to proceed withdrawal request.

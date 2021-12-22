@@ -73,7 +73,7 @@ The withdrawal API can also interact with the contracts (ERC/BEP 721/1155) deplo
 **POST** /v1/sofa/wallets/`WALLET_ID`/sender/transactions
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 <aside class="notice">
