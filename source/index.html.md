@@ -38,13 +38,15 @@ includes:
   - withdraw-wallet-api/query-withdrawal-wallet-transaction-history
   - withdraw-wallet-api/sign-message
   - withdraw-wallet-api/call-contract-read-abi
-  - withdraw-wallet-api/query-callback-history
-  - withdraw-wallet-api/query-callback-detail
-  - withdraw-wallet-api/query-wallet-synchronization-info
-  - withdraw-wallet-api/query-transaction-average-fee
-  - withdraw-wallet-api/batch-query-transaction-average-fees
-  - withdraw-wallet-api/query-vault-wallet-transaction-history
-  - withdraw-wallet-api/query-vault-wallet-balance
+
+  - deposit-withdraw-wallet-common/query-callback-history
+  - deposit-withdraw-wallet-common/query-callback-detail
+  - deposit-withdraw-wallet-common/query-wallet-synchronization-info
+  - deposit-withdraw-wallet-common/query-transaction-average-fee
+  - deposit-withdraw-wallet-common/batch-query-transaction-average-fees
+
+  - vault-wallet-api/query-vault-wallet-transaction-history
+  - vault-wallet-api/query-vault-wallet-balance
 
   - common-api/activate-api-code
   - common-api/query-api-code-status
@@ -76,7 +78,7 @@ meta:
 	- Refer to CYBAVO VAULT SOFA User Manual for detailed steps.
 - Request an API code/secret (via web control panel)
 - Create deposit addresses (via CYBAVO SOFA API)
-	- Refer to [Create deposit addresses](#post-nbsp-create-deposit-addresses) API
+	- Refer to [Create deposit addresses](#post-create-deposit-addresses) API
 - Waiting for the CYBAVO SOFA system detecting transactions to those deposit addresses
 - Handle the deposit callback
 	- Use the callback data to update certain data on your system.
@@ -88,7 +90,7 @@ meta:
 	- Refer to CYBAVO VAULT SOFA User Manual for detailed steps.
 - Request an API code/secret (via web control panel)
 - Make withdraw request (via CYBAVI SOFA API)
-	- Refer to [Withdraw Assets](#withdraw-assets) API
+	- Refer to [Withdraw Assets](#post-withdraw-assets) API
 	- <b>Security Enhancement</b>: Also set the withdrawal authentication callback URL to authorize the withdrawal requests sent to the CYBAVO SOFA system.
 - Waiting for the CYBAVO SOFA system broadcasting transactions to blockchain
 - Handle the withdrawal callback
@@ -96,7 +98,7 @@ meta:
 	- Refer to [Callback Integration](#callback-integration) for detailed information.
 
 ### Try it now
-- Use [mock server](#mock-server) to test CYBAVO SOFA API right away.
+- Use [mock server](#how-to-compile-mock-server) to test CYBAVO SOFA API right away.
 
 ### Start integration
 - To make a correct API call, refer to [API Authentication](#api-authentication).
@@ -110,14 +112,14 @@ meta:
 
 ### How to acquire and refresh API code and secret
 - Request the API code/secret from the **Wallet Details** page on the web control panel for the first time.
-- A paired refresh code can be used in the [refresh API](#refresh-api-code) to acquire the new inactive API code/secret of the wallet.
+- A paired refresh code can be used in the [refresh API](#post-refresh-api-code) to acquire the new inactive API code/secret of the wallet.
 	- Before the inactive API code is activated, the currently activated API code is still valid.
 	- Once the paired API code becomes invalid, the paired refresh code will also become invalid.
 
 ### How to make a correct request?
 - Put the API code in the X-API-CODE header.
 	- Use the inactivated API code in any request will activate it automatically. Once activated, the currently activated API code will immediately become invalid.
-	- Or you can explicitly call the [activation API](#activate-api-code) to activate the API code before use
+	- Or you can explicitly call the [activation API](#post-activate-api-code) to activate the API code before use
 - Calculate the checksum with the corresponding API secret and put the checksum in the X-CHECKSUM header.
   - The checksum calculation will use all the query parameters, the current timestamp, user-defined random string and the post body (if any).
 - Please refer to the code snippet on the github project to know how to calculate the checksum.
@@ -134,16 +136,16 @@ meta:
 
 - A read-only API code can be used to call all the read functions of wallets.
 	- All the read functions will be labeled `VIEW` in front of the API definition.
-- Use [activation API](#activate-api-code) with the `WALLET_ID` set as `readonly` to activate a read-only API code.
+- Use [activation API](#post-activate-api-code) with the `WALLET_ID` set as `readonly` to activate a read-only API code.
 	- The full API path is `/v1/sofa/wallets/readonly/apisecret/activate`
 	- After activation, the API code will remain valid until it is replaced by a newly activated read-only API code.
-- Use [listing API](#list-wallets) to list all wallets that can be accessed through a read-only API code.
+- Use [listing API](#get-list-wallets) to list all wallets that can be accessed through a read-only API code.
 
 # Callback
 ## Callback Integration
 
 - Please note that the wallet must have an activated API code, otherwise no callback will be sent.
-	- Use the [activation API](#activate-api-code) to activate an API code.
+	- Use the [activation API](#post-activate-api-code) to activate an API code.
 - How to distinguish between deposit and withdrawal callbacks?
 	- Deposit Callback (callback type 1)
 	  - The combination of **txid** and **vout_index** of the callback is unique, use this combined ID to identify the deposit request, not to use only the transaction ID (txid field). Because multiple deposit callbacks may have the same transaction ID, for example, BTC many-to-many transactions.
@@ -156,7 +158,7 @@ improper handling of deposit/ withdrawal requests.
 </aside>
 
 - To ensure that the callbacks have processed by callback handler, the CYBAVO SOFA system will continue to send the callbacks to the callback URL until a callback confirmation (HTTP/1.1 200 OK) is received or exceeds the number of retries (retry time interval: 1-3-5-15-45 mins).
-	- If all attempts fail, the callback will be set to a failed state, the callback handler can call the [resend deposit callback](#resend-deposit-callbacks) or [resend withdrawal callback](#resend-withdrawal-callbacks) API to request CYBAVO SOFA system to resend such kind of callback(s) or through the web control panel.
+	- If all attempts fail, the callback will be set to a failed state, the callback handler can call the [resend deposit callback](#post-resend-deposit-collection-callbacks) or [resend withdrawal callback](#post-resend-withdrawal-callbacks) API to request CYBAVO SOFA system to resend such kind of callback(s) or through the web control panel.
 
 <aside class="notice">
  Refer to Callback Definition , Callback Type Definition for detailed definition.
@@ -171,7 +173,7 @@ improper handling of deposit/ withdrawal requests.
 	- [Python](https://github.com/CYBAVO/API_CHECKSUM_CALC/blob/main/python/checksum.py#L64)
 
 - Best practice:
-	- While processing a deposit callback, in addition to verifying the checksum of the callback, use [Query Callback Detail](#query-callback-detail) API with the serial ID of the callback to perform an additional confirmation.
+	- While processing a deposit callback, in addition to verifying the checksum of the callback, use [Query Callback Detail](#post-query-callback-detail) API with the serial ID of the callback to perform an additional confirmation.
 
 <a name="callback-state-change"></a>
 ## Callback State Change

@@ -1,3 +1,4 @@
+# Vault Wallet API
 ## GET / Query Vault Wallet Transaction History
 
 ``` shell

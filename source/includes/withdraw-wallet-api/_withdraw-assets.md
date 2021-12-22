@@ -60,6 +60,19 @@ http://localhost:8889/v1/mock/wallets/{WALLET_ID}/sender/transactions
     "2": 20000000002
   }
 }
+
+
+# An example response of the request contains problematic addresses:
+{
+    "error_code": 827,
+    "error": "Outgoing address in black list, abort transaction",
+    "blacklist": {
+        "0x83eE561B2aBD000FF00d6ca22f38b29d4a760d4D": [
+            "Involve phishing activity",
+            "Involve cybercrime related"
+        ]
+    }
+}
 ```
 
 To withdraw assets from an withdrawal wallet, the caller must to provide an unique **order_id** for each request, the CYBAVO SOFA system will send the callback with the unique **order_id** when the withdrawal is success (from `in pool` state to `in chain` state). 
@@ -116,11 +129,22 @@ The request includes the following parameters:
 
 - The `block\_average_fee` and `manual_fee ` do not work for XRP, XLM, BNB, DOGE, EOS, TRX, ADA, DOT and SOL cryptocurrencies.
 
+### Response Format
+
 The response includes the following parameters:
 
 | Field | Type  | Description |
 | :---  | :---  | :---        |
 | results | array | Array of withdraw result (order ID/withdraw transaction ID pair), if succeeds |
+
+
+An example response of the request contains problematic addresses:
+
+| Field | Type  | Description |
+| :---  | :---  | :---        |
+| error_code | int | The error code |
+| error | string | The error message |
+| blacklist | object | The object describes all problematic addresses and their causes. |
 
 
 ### Error Code
