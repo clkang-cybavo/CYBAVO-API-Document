@@ -30,7 +30,7 @@ Check the withdrawal whitelist entry status in the withdrawal whitelist.
 **POST** /v1/sofa/wallets/`WALLET_ID`/sender/whitelist/check
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 

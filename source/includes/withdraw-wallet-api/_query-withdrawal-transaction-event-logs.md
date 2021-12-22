@@ -34,7 +34,7 @@ Query event logs of a withdrawal transaction by transaction hash.
 **GET** /v1/sofa/wallets/`WALLET_ID`/sender/transactions/eventlog?txid=`TXID`
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 

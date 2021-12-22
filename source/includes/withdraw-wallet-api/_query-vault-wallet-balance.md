@@ -36,7 +36,7 @@ Get the vault wallet balance. Facilitate to establish a real-time balance monito
 **GET** /v1/sofa/wallets/`WALLET_ID`/vault/balance
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 ---

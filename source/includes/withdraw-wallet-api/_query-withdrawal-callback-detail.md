@@ -40,7 +40,7 @@ Query the detailed information of the withdrawal callback by the order ID.
  **GET** /v1/sofa/wallets/`WALLET_ID`/sender/notifications/order_id/`ORDER_ID`
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 

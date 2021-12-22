@@ -18,7 +18,7 @@ Query the whitelist configuration of the withdrawal wallet.
  **GET** /v1/sofa/wallets/`WALLET_ID`/sender/whitelist/config
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 

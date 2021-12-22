@@ -16,7 +16,7 @@ To cancel the withdrawal request which state is `Init` or `Failed`. The request 
 **POST** /v1/sofa/wallets/`WALLET_ID`/sender/transactions/`ORDER_ID`/cancel
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 ---

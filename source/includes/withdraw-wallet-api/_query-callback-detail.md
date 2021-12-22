@@ -70,7 +70,7 @@ Query the detailed information of the callback by its serial ID. It can be used 
 **POST** /v1/sofa/wallets/`WALLET_ID`/notifications/get\_by_id
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 ---

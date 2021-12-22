@@ -19,7 +19,7 @@ Get the blockchain synchronization status of a wallet.
 **GET** /v1/sofa/wallets/`WALLET_ID`/blocks
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 ---

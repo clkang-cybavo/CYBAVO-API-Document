@@ -23,7 +23,7 @@ Get the withdrawal wallet balance. Facilitate to establish a real-time balance m
  **GET** /v1/sofa/wallets/`WALLET_ID`/sender/balance
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 

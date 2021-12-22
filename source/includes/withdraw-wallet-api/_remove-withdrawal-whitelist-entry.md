@@ -33,7 +33,7 @@ Remove an outgoing address from the withdrawal wallet's whitelist.
 **DELETE** /v1/sofa/wallets/`WALLET_ID`/sender/whitelist
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 <aside class="notice">

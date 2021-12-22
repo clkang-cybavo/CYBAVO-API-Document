@@ -23,7 +23,7 @@ Refer to [Callback Integration](#callback-integration) for callback rules.
 **POST** /v1/sofa/wallets/`WALLET_ID`/sender/notifications/manual
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 

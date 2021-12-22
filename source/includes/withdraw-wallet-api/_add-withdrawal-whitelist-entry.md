@@ -34,7 +34,7 @@ Add an outgoing address to the withdrawal wallet's whitelist.
 **POST** /v1/sofa/wallets/`WALLET_ID`/sender/whitelist
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 

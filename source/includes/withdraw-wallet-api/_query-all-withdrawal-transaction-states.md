@@ -40,7 +40,7 @@ Check the all withdrawal transaction states of certain order ID.
  **GET** /v1/sofa/wallets/`WALLET_ID`/sender/transactions/`ORDER_ID`/all
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 ### The order ID is used in the [withdraw assets](#post-withdraw-assets) API.

@@ -21,7 +21,7 @@ Set an authorized IP to the withdrawal request ACL dynamically.
 **POST** /v1/sofa/wallets/`WALLET_ID`/sender/transactions/acl
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 

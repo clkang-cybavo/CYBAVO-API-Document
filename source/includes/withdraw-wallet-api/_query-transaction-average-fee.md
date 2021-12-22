@@ -24,7 +24,7 @@ Query average blockchain fee within latest N blocks.
 **POST** /v1/sofa/wallets/`WALLET_ID`/autofee
 
 <aside class="notice">
- WALLET_ID must be a deposit wallet ID
+ WALLET_ID must be a withdrawal wallet ID
 </aside>
 
 ---
