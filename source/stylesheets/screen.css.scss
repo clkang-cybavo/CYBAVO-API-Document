@@ -588,6 +588,10 @@ html, body {
     padding: 2em $main-padding;
   }
 
+  p{
+    word-wrap: break-word;
+  }
+
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
