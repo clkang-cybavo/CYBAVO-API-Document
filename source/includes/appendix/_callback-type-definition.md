@@ -81,23 +81,3 @@ The * mark represents the definition of pseudo-cryptocurrency in the CYBAVO SOFA
 
 
 
-
-## Memo Requirement
-
-| Currency | Description |
-| :--- | :---        |
-| XRP | Up to 32-bit unsigned integer (max 4294967295) |
-| XLM | Up to 20 chars |
-| EOS | Up to 256 chars |
-| BNB | Up to 128 chars |
-
-
-## Wallet Type Definition
-
-| Type | Description |
-| :--- | :---        |
-| 0 | Vault wallet |
-| 1 | Batch wallet |
-| 2 | Deposit wallet |
-| 3 | Withdrawal wallet |
-| 5 | Deposit-withdrawal hybrid wallet |

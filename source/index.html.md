@@ -2,9 +2,7 @@
 title: CYBAVO API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - go
-  - java
+  - curl
   - javascript
 
 
@@ -62,6 +60,8 @@ includes:
 
   - appendix/callback-definition
   - appendix/callback-type-definition
+  - appendix/memo-requirement
+  - appendix/wallet-type-definition
 search: true
 
 code_clipboard: true
