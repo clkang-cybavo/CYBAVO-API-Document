@@ -61,7 +61,7 @@ html, body {
   background-color: $nav-bg;
   font-size: 13px;
   font-weight: bold;
-
+  
   // language selector for mobile devices
   .lang-selector {
     display: none;
@@ -121,6 +121,7 @@ html, body {
     li {
       margin: 1em $nav-padding;
       line-height: 1;
+      
     }
 
     a {
@@ -141,22 +142,26 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 28px;
+    //line-height : 40px;
+    
   }
   .lir {
     list-style: none;
     margin-top: -10px;
     padding: 0;
     line-height: 16px;
-    height:46px;
+    
   }
   li {
     color: $nav-text;
-    transition-property: background;
     transition-timing-function: linear;
+    transition-property: background;
     transition-duration: 200ms;
   }
-
+  a{
+    padding-left: 0em;
+    text-indent:-0.5em;
+  }
   // This is the currently selected ToC entry
   .toc-link.active {
     background-color: $nav-active-bg;
@@ -191,7 +196,7 @@ html, body {
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
     font-size: 14px;
-    overflow-y: hidden;
+    
   }
   .toc-h3 {
     padding-left: $nav-padding + $nav-indent + $nav-indent;
@@ -206,6 +211,7 @@ html, body {
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     margin-right: 5px;
+    margin-bottom:0.5em;
     font-size: 10px;
   }
   .toc-footer {
@@ -230,11 +236,11 @@ html, body {
   }
 }
 
-.toc-link, .toc-footer li {
+.toc-link, .toc-footer {
   padding: 0 $nav-padding 0 $nav-padding;
   display: block;
   overflow-x: hidden;
-  white-space: nowrap;
+  white-space: pre-line;
   text-overflow: ellipsis;
   text-decoration: none;
   color: $nav-text;
@@ -242,6 +248,13 @@ html, body {
   transition-timing-function: linear;
   transition-duration: 130ms;
 }
+.lh{
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: unset;
+}
+
 .np{
   display: block;
   margin-block-start: 0em;
@@ -589,7 +602,7 @@ html, body {
   }
 
   p{
-    word-wrap: break-word;
+    word-wrap: pre-line;
   }
 
   blockquote {
